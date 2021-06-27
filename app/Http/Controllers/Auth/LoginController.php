@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -13,8 +14,13 @@ class LoginController extends Controller
         return view('login');
     }
 
-    public function login()
-    {
-        return request();
+    public function login(Request $request)
+    {	
+    	$credentials = $request->validate([
+    		'email' => 'required|email',
+    		'password' => 'required|string|min:6'
+    	]);
+
+        return back()->withError();
     }
 }
