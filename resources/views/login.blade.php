@@ -16,6 +16,7 @@
 						type="email" 
 						name="email" 
 						placeholder="Ingresa tu email"
+						value="{{ old('email') }}" 
 						required>
 					{!! $errors->first('email',"<span class='help-block'>:message</span>") !!}
 				</div>

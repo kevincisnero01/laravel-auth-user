@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
+use Auth;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class LoginController extends Controller
 {
@@ -16,11 +17,19 @@ class LoginController extends Controller
 
     public function login(Request $request)
     {	
+
     	$credentials = $request->validate([
     		'email' => 'required|email',
     		'password' => 'required|string|min:6'
     	]);
 
-        return back()->withError();
+    	if(Auth::attempt($credentials))
+    	{
+    		return redirect()->route('dashboard');
+    	}
+
+        return back()
+        	->withInput(request(['email']))
+        	->withErrors(['password' => trans('auth.failed')]);
     }
 }

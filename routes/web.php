@@ -14,3 +14,5 @@
 Route::get('/', 'Auth\LoginController@showLoginForm')->name('login.index');
 
 Route::post('login', 'Auth\LoginController@login')->name('login');
+
+Route::get('dashboard','DashboardController@index')->name('dashboard');
