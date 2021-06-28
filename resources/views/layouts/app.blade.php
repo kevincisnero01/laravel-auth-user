@@ -7,10 +7,11 @@
     <link rel="stylesheet" href="{{ asset('plugins/bootstrap/css/bootstrap.css') }}">
 </head>
 <body>
-	<div class="container">
-		@yield('content')
+	@include('layouts.nav')
+	<div class="container-fluid">
+	@yield('content')
 	</div><!--container-->
+<script type="text/javascript" src="{{ asset('plugins/jquery/jquery.js') }}"></script>
+<script type="text/javascript" src="{{ asset('plugins/bootstrap/js/bootstrap.js') }}"></script>
 </body>
-<script type="text/js" src="{{ asset('plugins/jquery/jquery.js') }}"></script>
-<script type="text/js" src="{{ asset('plugins/bootstrap/js/bootstrap.js') }}"></script>
 </html>
