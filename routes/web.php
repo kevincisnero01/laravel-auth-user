@@ -18,3 +18,7 @@ Route::post('login', 'Auth\LoginController@login')->name('login');
 Route::post('logout','Auth\LoginController@logout')->name('logout');
 
 Route::get('dashboard','DashboardController@index')->name('dashboard');
+
+Route::get('admin/users','UserController@index')->name('admin.users.index');
+
+Route::post('admin/users','UserController@store')->name('admin.users.store');

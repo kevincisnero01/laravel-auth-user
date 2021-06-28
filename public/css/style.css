@@ -4,12 +4,13 @@
 }
 
 #nav-profile a{
-	width: 180px;
+	min-width: 160px;
 	display: inline-block;
 	position: relative;
 	padding: 15px !important;
 	color: #777
 }
+
 #nav-profile .caret{
 	float: right;
 	margin-top: 8px;
