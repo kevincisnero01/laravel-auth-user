@@ -8,6 +8,14 @@
 </head>
 <body>
 	@include('layouts.nav')
+
+	@if(session()->has('flash'))
+		<div class="alert alert-info alert-custom">
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			{{ session('flash') }}
+		</div>
+	@endif
+
 	<div class="container-fluid">
 	@yield('content')
 	</div><!--container-->
