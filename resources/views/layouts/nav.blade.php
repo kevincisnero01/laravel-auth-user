@@ -28,7 +28,10 @@
             </li>
             <li role="separator" class="divider"></li>
             <li>
-            	<a href="#"><span class="glyphicon glyphicon-log-out"></span> Salir</a>
+            	<form action="logout" method="POST" id="logout">
+            		{{ csrf_field() }}
+            		<a href="#" onClick="document.getElementById('logout').submit()"><span class="glyphicon glyphicon-log-out"></span> Salir</a>
+            	</form>
             </li>
           </ul>
         </li>
@@ -37,13 +40,3 @@
 
 </div><!--.container-->
 </nav><!--nav-->
-<!--
-
-
-<li>
-	<form action="/logout" method="POST" class="custom-form-inline">
-		{{ csrf_field() }}
-		<a href="#" onclick="this.closest('form').submit()" ><span class="glyphicon glyphicon-log-out"></span> Logout</a>
-	</form>
-</li>
--->

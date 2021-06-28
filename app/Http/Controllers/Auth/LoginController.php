@@ -8,7 +8,12 @@ use App\Http\Controllers\Controller;
 
 class LoginController extends Controller
 {
-
+   
+    public function __construct()
+    {
+        $this->middleware('guest', ['only' => 'showLoginForm']);
+    }
+     /**/
 
     public function showLoginForm()
     {
@@ -17,7 +22,6 @@ class LoginController extends Controller
 
     public function login(Request $request)
     {	
-
     	$credentials = $request->validate([
     		'email' => 'required|email',
     		'password' => 'required|string|min:6'
@@ -31,5 +35,11 @@ class LoginController extends Controller
         return back()
         	->withInput(request(['email']))
         	->withErrors(['password' => trans('auth.failed')]);
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+        return redirect('/');
     }
 }
