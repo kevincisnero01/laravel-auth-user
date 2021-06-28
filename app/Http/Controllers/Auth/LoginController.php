@@ -23,7 +23,7 @@ class LoginController extends Controller
     public function login(Request $request)
     {	
     	$credentials = $request->validate([
-    		'email' => 'required|email',
+    		$this->username() => 'required',
     		'password' => 'required|string|min:6'
     	]);
 
@@ -33,7 +33,7 @@ class LoginController extends Controller
     	}
 
         return back()
-        	->withInput(request(['email']))
+        	->withInput(request([$this->username()]))
         	->withErrors(['password' => trans('auth.failed')]);
     }
 
@@ -41,5 +41,10 @@ class LoginController extends Controller
     {
         Auth::logout();
         return redirect('/');
+    }
+
+    public function username()
+    {
+        return 'username';
     }
 }

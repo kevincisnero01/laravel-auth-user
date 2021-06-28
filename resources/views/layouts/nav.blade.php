@@ -16,7 +16,12 @@
 		<li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
           	<span class="glyphicon glyphicon-user"></span>
-          	{{ strtoupper(auth()->user()->name) }}
+            @php
+                $names = explode(" ",auth()->user()->name);
+                $name1 = $names[0];
+                $name2 = str_limit($names[1],3);
+                echo "<b>$name1 $name2</b>";
+            @endphp
           	<span class="caret"></span>
           </a>
 
