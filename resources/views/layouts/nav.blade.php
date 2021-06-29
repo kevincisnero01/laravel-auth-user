@@ -11,6 +11,13 @@
 	<ul class="nav navbar-nav">
 		<li><a href="/dashboard"><span class="glyphicon glyphicon-th"></span> Dashboard</a></li>
 	</ul>
+
+  @if(session()->has('impersonator_id'))
+    <form action="{{ route('impersonations.destroy') }}" method="POST" class="navbar-form navbar-left">
+      {{ csrf_field() }} {{ method_field('DELETE') }}
+      <button type="submit" class="btn btn-danger">Dejar de personificar</button>
+    </form>
+  @endif
 	
 	<ul class="nav navbar-nav navbar-right">
     <li>
@@ -39,7 +46,7 @@
         </li>
         <li role="separator" class="divider"></li>
         <li>
-        	<form action="logout" method="POST" id="logout">
+        	<form action="{{ route('logout') }}" method="POST" id="logout">
         		{{ csrf_field() }}
         		<a href="#" onClick="document.getElementById('logout').submit()"><span class="glyphicon glyphicon-log-out"></span> Salir</a>
         	</form>

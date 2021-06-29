@@ -20,7 +20,7 @@
 					<td>{{ $user->name }}</td>
 					<td>{{ $user->email }}</td>
 					<td> 
-						<form action="{{ route('admin.users.store') }}" method="POST">
+						<form action="{{ route('impersonations.store') }}" method="POST">
 							{{ csrf_field() }}
 							<input type="hidden" name="user_id" value="{{ $user->id }}">
 							<button  type="submit" class="btn btn-xs btn-info">
