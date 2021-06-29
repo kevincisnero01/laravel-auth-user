@@ -19,7 +19,8 @@
 					<td>{{ $user->id }}</td>
 					<td>{{ $user->name }}</td>
 					<td>{{ $user->email }}</td>
-					<td> 
+					<td>
+						@if(auth()->user()->canImpersonate($user->id))
 						<form action="{{ route('impersonations.store') }}" method="POST">
 							{{ csrf_field() }}
 							<input type="hidden" name="user_id" value="{{ $user->id }}">
@@ -28,6 +29,7 @@
 								Impersonar
 						</button>
 						</form>
+						@endif
 					</td>
 				</tr>
 				@endforeach

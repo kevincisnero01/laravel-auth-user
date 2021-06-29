@@ -27,8 +27,8 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function canImpersonate()
+    public function canImpersonate($userId = null)
     {
-        return $this->id === 1;
+        return $this->id === 1 && $this->id !== $userId;
     }
 }
